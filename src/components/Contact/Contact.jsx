@@ -1,9 +1,13 @@
 import React from 'react';
 import s from "./Contact.module.css";
+import {useDispatch} from "react-redux";
+import {deleteContacts} from "../../redux/contactsSlice.js";
 
-const Contact = ({contact, deleteUser}) => {
+const Contact = ({contact}) => {
     const {name, number} = contact;
-    console.log(contact);
+    const dispatch = useDispatch();
+
+
     return (
         <>
             <div className={s.card}>
@@ -16,8 +20,9 @@ const Contact = ({contact, deleteUser}) => {
                     </div>
 
                 </div>
-                <button className={s.button} onClick={() => deleteUser(contact.id)}>
-                    <a className="waves-effect waves-light btn-small">Delete</a>
+                <button className={s.button}
+                        onClick={() => dispatch(deleteContacts(contact.id))}>
+                    Delete
                 </button>
             </div>
         </>
