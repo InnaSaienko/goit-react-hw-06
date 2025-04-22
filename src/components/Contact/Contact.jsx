@@ -6,8 +6,6 @@ import {deleteContacts} from "../../redux/contactsSlice.js";
 const Contact = ({contact}) => {
     const {name, number} = contact;
     const dispatch = useDispatch();
-
-
     return (
         <>
             <div className={s.card}>
