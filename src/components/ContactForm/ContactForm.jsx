@@ -4,6 +4,7 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import {useDispatch} from "react-redux";
 import {addContact} from "../../redux/contactsSlice.js";
+import { v4 as uuidv4 } from 'uuid';
 const initialValues = {
     name: "",
     number: "",
@@ -20,7 +21,9 @@ const ContactForm = () => {
 
 
     const handleSubmit = (values, actions) => {
-        dispatch(addContact(values));
+        const uniqueId = uuidv4();
+        const newContact = { ...values, id: uniqueId };
+        dispatch(addContact(newContact));
         actions.resetForm();
     };
 
