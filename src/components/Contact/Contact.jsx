@@ -7,6 +7,11 @@ const Contact = ({contact}) => {
     const {name, number} = contact;
     const dispatch = useDispatch();
     console.log("contact: ", contact);
+
+    const handleDelete = () => {
+        dispatch(deleteContact(contact.id));
+    };
+
     return (
         <>
             <div className={s.card}>
@@ -17,10 +22,9 @@ const Contact = ({contact}) => {
                     <div className={s.cardNumber}>
                         <p>{number}</p>
                     </div>
-
                 </div>
                 <button className={s.button}
-                        onClick={() => dispatch(deleteContact(contact.id))}>
+                        onClick={handleDelete}>
                     Delete
                 </button>
             </div>
