@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 const ContactList = () => {
     const users = useSelector(state => state.contacts.items);
     const filter = useSelector(state => state.filters.name);
-
     const getFilteredContacts = (userContacts, filterValue) => {
         if (filterValue !== "") {
             return userContacts.filter(
@@ -20,9 +19,14 @@ const ContactList = () => {
     const filteredContacts = getFilteredContacts(users, filter);
     return (
         <div className={s.list}>
-            {filteredContacts.map((contact, index) => (
-                <Contact key={index} contact={contact}/>
-            ))}
+            {filteredContacts.length === 0 ? (
+                <p>No users available</p>
+            ) : (
+                filteredContacts.map((contact) => (
+                        <Contact key={contact.id} contact={contact}/>
+                    ))
+                )
+            }
         </div>
     );
 }
