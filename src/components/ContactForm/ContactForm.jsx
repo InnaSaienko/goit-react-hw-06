@@ -18,8 +18,6 @@ const validationSchema = Yup.object().shape({
 const ContactForm = () => {
    const dispatch = useDispatch();
 
-
-
     const handleSubmit = (values, actions) => {
         const uniqueId = uuidv4();
         const newContact = { ...values, id: uniqueId };
@@ -35,10 +33,9 @@ const ContactForm = () => {
                 <Field type="text" name="name" placeholder="Name" className={s.field} />
                 <ErrorMessage name="name" component="span" className={s.errorMessage} />
 
-                <label htmlFor="numbe" className={s.label} /> Number
-                <Field type="number" name="number" placeholder="Number" className={s.field} />
+                <label htmlFor="number" className={s.label} /> Number
+                <Field type="text" name="number" placeholder="Number" className={s.field} />
                 <ErrorMessage name="number" component="span" className={s.errorMessage} />
-
                 <button type="submit" className={s.button}>
                     Add Contact
                 </button>
