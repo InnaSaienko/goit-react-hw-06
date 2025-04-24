@@ -6,6 +6,10 @@ import {changeFilter} from "../../redux/filtersSlice.js";
 function SearchBox() {
     const dispatch = useDispatch();
 
+    const newFilter = (filter) => {
+        console.log("newFilter: ", filter);
+        dispatch(changeFilter(filter));
+    };
     return (
         <div className={s.searchBox}>
             <label className={s.label}>Find contact by name</label>
@@ -13,7 +17,7 @@ function SearchBox() {
                 type="text"
                 placeholder="Search contacts..."
                 name="filter"
-                onChange={(e) => dispatch(changeFilter(e.target.value))}
+                onChange={(e) => newFilter(e.target.value) }
                 className={s.input}
             />
         </div>
