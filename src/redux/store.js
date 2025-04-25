@@ -10,11 +10,9 @@ const persistConfig = {
     whitelist: ['items'],
 };
 
-const persistedContactsReducer = persistReducer(persistConfig, contactsSlice);
-
 export const store = configureStore({
     reducer: {
-        contacts: persistedContactsReducer,
+        contacts: persistReducer(persistConfig, contactsSlice), // save to local store
         filters: filtersSlice,
     },
     devTools:  import.meta.env.MODE === 'development',
